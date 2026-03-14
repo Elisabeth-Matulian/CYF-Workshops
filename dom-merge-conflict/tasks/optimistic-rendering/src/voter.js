@@ -14,7 +14,11 @@ export function Voter(updateVote) {
     const message = document.createElement("p");
     message.textContent = "Liked";
     container.appendChild(message);
-    button.remove();
+   
+    const image = document.createElement("img");
+    image.setAttribute("src", "/media/like");
+    image.setAttribute("alt", "Liked image");
+    button.appendChild(image)
 
     updateVote().catch(() => {
       message.remove()
@@ -25,6 +29,7 @@ export function Voter(updateVote) {
       container.appendChild(button);
       button.textContent = "Error";
     });
+
   });
 
   return container;
