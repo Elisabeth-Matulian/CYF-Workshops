@@ -15,6 +15,10 @@ export function Voter(updateVote) {
       .then(() => {
         const message = document.createElement("p");
         message.textContent = "Liked";
+        const image = document.createElement("img");
+        image.setAttribute("src", "/media/like");
+        image.setAttribute("alt", "Liked image");
+        button.appendChild(image)
 
         container.appendChild(message);
         button.remove();
