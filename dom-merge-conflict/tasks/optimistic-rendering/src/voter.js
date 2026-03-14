@@ -11,18 +11,22 @@ export function Voter(updateVote) {
   button.addEventListener("click", () => {
     errorMessage.remove();
 
-    updateVote()
-      .then(() => {
-        const message = document.createElement("p");
-        message.textContent = "Liked";
+// вывод like — сразу при клике, до resolve или reject промиса
+  const message = document.createElement("p");
+  message.textContent = "Liked";
 
-        container.appendChild(message);
-        button.remove();
-      })
+  container.appendChild(message);
+  button.remove();
+
+
+    updateVote()
       .catch(() => {
+        //удалить сообщение?????
+        message.remove();
         errorMessage.textContent =
           "We could not process your vote, please try again later.";
         container.appendChild(errorMessage);
+        container.appendChild(button);
       });
   });
 
