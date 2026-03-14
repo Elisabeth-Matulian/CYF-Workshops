@@ -11,23 +11,25 @@ export function Voter(updateVote) {
   button.addEventListener("click", () => {
     errorMessage.remove();
 
-    updateVote()
-      .then(() => {
-        const message = document.createElement("p");
-        message.textContent = "Liked";
-        const image = document.createElement("img");
-        image.setAttribute("src", "/media/like");
-        image.setAttribute("alt", "Liked image");
-        button.appendChild(image)
+    const message = document.createElement("p");
+    message.textContent = "Liked";
+    container.appendChild(message);
+   
+    const image = document.createElement("img");
+    image.setAttribute("src", "/media/like");
+    image.setAttribute("alt", "Liked image");
+    button.appendChild(image)
 
-        container.appendChild(message);
-        button.remove();
-      })
-      .catch(() => {
-        errorMessage.textContent =
-          "We could not process your vote, please try again later.";
-        container.appendChild(errorMessage);
-      });
+    updateVote().catch(() => {
+      message.remove()
+
+      errorMessage.textContent =
+        "We could not process your vote, please try again later.";
+      container.appendChild(errorMessage);
+      container.appendChild(button);
+      button.textContent = "Error";
+    });
+
   });
 
   return container;

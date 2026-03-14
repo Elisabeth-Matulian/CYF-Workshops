@@ -123,7 +123,7 @@ describe("like button", () => {
     });
   });
 
-  describe.skip("optimistic rendering", () => {
+  describe("optimistic rendering", () => {
     let pending = null;
     let container = null;
 
